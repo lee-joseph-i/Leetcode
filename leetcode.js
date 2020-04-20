@@ -138,3 +138,24 @@ var createTargetArray = function (nums, index) {
 
   return target;
 };
+
+
+//rangeSumBST !!! (bfs solution)
+var rangeSumBST = function (root, L, R) {
+  let sum = 0;
+
+  let stack = [root];
+
+  while (stack.length > 0) {
+    let node = stack.shift();
+    if (node) {
+      console.log(node.val)
+      if (node.val <= R && node.val >= L) {
+        sum += node.val;
+      };
+      stack.push(node.left);
+      stack.push(node.right);
+    };
+  };
+  return sum;
+};

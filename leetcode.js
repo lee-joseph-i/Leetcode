@@ -141,24 +141,24 @@ var createTargetArray = function (nums, index) {
 
 
 //rangeSumBST !!! (bfs solution)
-var rangeSumBST = function (root, L, R) {
-  let sum = 0;
+// var rangeSumBST = function (root, L, R) {
+//   let sum = 0;
 
-  let stack = [root];
+//   let stack = [root];
 
-  while (stack.length > 0) {
-    let node = stack.shift();
-    if (node) {
-      console.log(node.val)
-      if (node.val <= R && node.val >= L) {
-        sum += node.val;
-      };
-      stack.push(node.left);
-      stack.push(node.right);
-    };
-  };
-  return sum;
-};
+//   while (stack.length > 0) {
+//     let node = stack.shift();
+//     if (node) {
+//       console.log(node.val)
+//       if (node.val <= R && node.val >= L) {
+//         sum += node.val;
+//       };
+//       stack.push(node.left);
+//       stack.push(node.right);
+//     };
+//   };
+//   return sum;
+// };
 
 //rangeSumBST !!! DFS solution
 // var rangeSumBST = function (root, L, R) {
@@ -171,3 +171,16 @@ var rangeSumBST = function (root, L, R) {
 //   return sum + rangeSumBST(root.left, L, R) + rangeSumBST(root.right, L, R);
 
 // };
+
+//rangeSumBST !!! with a dfs closure method (method within method, best choice)
+var rangeSumBST = function (root, L, R) {
+  let sum = 0;
+  const dfs = node => {
+    if (!node) return;
+    if (node.val >= L && node.val <= R) sum += node.val;
+    dfs(node.left);
+    dfs(node.right);
+  }
+  dfs(root);
+  return sum;
+};

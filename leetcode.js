@@ -159,3 +159,15 @@ var rangeSumBST = function (root, L, R) {
   };
   return sum;
 };
+
+//rangeSumBST !!! DFS solution
+// var rangeSumBST = function (root, L, R) {
+//   if (!root) return 0;
+
+//   let sum = 0;
+
+//   if (root.val <= R && root.val >= L) sum += root.val;
+
+//   return sum + rangeSumBST(root.left, L, R) + rangeSumBST(root.right, L, R);
+
+// };

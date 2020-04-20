@@ -109,3 +109,20 @@ var checkValidString = function (s) {
   return true;
 
 };
+
+//balancedStringSplit
+var balancedStringSplit = function (s) {
+  let total = 0;
+  let balance = 0;
+
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] === "R") {
+      balance++
+    } else {
+      balance--;
+    };
+    if (balance === 0) total++;
+  };
+
+  return total;
+};

@@ -1,3 +1,4 @@
+// Search "!!!" for methods that I either 1. had difficulty with or 2. learned something new
 
 // jewels-and-stones
 var numJewelsInStones = function (J, S) {
@@ -48,7 +49,7 @@ var findNumbers = function (nums) {
   return count;
 };
 
-//checkValidString
+//checkValidString !!!
 var checkValidString = function (s) {
   if (s.split('')[0] === ')' || s.split('')[-1] === '(') return false
   let count = 0;
@@ -110,7 +111,7 @@ var checkValidString = function (s) {
 
 };
 
-//balancedStringSplit
+//balancedStringSplit !!!
 var balancedStringSplit = function (s) {
   let total = 0;
   let balance = 0;
@@ -125,4 +126,15 @@ var balancedStringSplit = function (s) {
   };
 
   return total;
+};
+
+//createTargetArray !!!
+var createTargetArray = function (nums, index) {
+  let target = [];
+
+  for (let i = 0; i < index.length; i++) {
+    target.splice(index[i], 0, nums[i]) //splice(index, # of elements to REMOVE, what u want to insert)
+  }
+
+  return target;
 };

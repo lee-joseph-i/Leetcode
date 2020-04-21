@@ -199,3 +199,19 @@ var getDecimalValue = function (head) {
 
   return parseInt(string, 2)
 };
+
+//minTimeToVisitAllPoints
+var minTimeToVisitAllPoints = function (points) {
+  let seconds = 0;
+
+  for (let i = 0; i < points.length - 1; i++) {
+    let remainder = 0;
+    let diff_x = Math.abs(points[i][0] - points[i + 1][0]);
+    let diff_y = Math.abs(points[i][1] - points[i + 1][1]);
+    if (diff_x > diff_y) {
+      seconds += diff_x
+    } else { seconds += diff_y };
+  };
+
+  return seconds;
+};

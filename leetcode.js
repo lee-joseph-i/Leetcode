@@ -215,3 +215,20 @@ var minTimeToVisitAllPoints = function (points) {
 
   return seconds;
 };
+
+// a/A career test 6 challenge problem
+function getHeight(arr) {
+  arr = arr.sort((a, b) => a - b) // !!! this is how you sort properly with numbers!
+  let max = -Infinity
+  arr[0] = 1
+  for (let x = 1; x < arr.length; x++) {
+    if (arr[x] > arr[x - 1]) {
+      arr[x] = arr[x - 1] + 1
+    } else if (arr[x] < arr[x - 1]) {
+      max = arr[x - 1]
+      break;
+    }
+    max = arr[x]
+  }
+  return max
+}

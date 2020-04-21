@@ -184,3 +184,18 @@ var rangeSumBST = function (root, L, R) {
   dfs(root);
   return sum;
 };
+
+//getDecimalValue
+var getDecimalValue = function (head) {
+  let string = '';
+
+  const dfs = node => {
+    if (!node) return '';
+    string += node.val;
+    dfs(node.next);
+  };
+
+  dfs(head);
+
+  return parseInt(string, 2)
+};

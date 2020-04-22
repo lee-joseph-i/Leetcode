@@ -241,3 +241,26 @@ var getTargetCopy = function (original, cloned, target) {
 
   return getTargetCopy(original, cloned.left, target) || getTargetCopy(original, cloned.right, target)
 };
+
+//deepestLeavesSum
+var deepestLeavesSum = function (root) {
+  let max_depth = 0;
+  let sum = 0;
+
+  const dfs = (node, depth) => {
+    if (!node) return;
+
+    if (depth === max_depth) {
+      sum += node.val;
+    } else if (depth > max_depth) {
+      sum = node.val;
+      max_depth = depth;
+    };
+
+    dfs(node.left, depth + 1);
+    dfs(node.right, depth + 1);
+  };
+
+  dfs(root, 0);
+  return sum;
+};

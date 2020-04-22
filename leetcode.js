@@ -264,3 +264,27 @@ var deepestLeavesSum = function (root) {
   dfs(root, 0);
   return sum;
 };
+
+//isAnagram
+var isAnagram = function (s, t) {
+
+  let hash = {};
+
+  s.split('').forEach(el => {
+    if (hash[el]) {
+      hash[el] += 1;
+    } else {
+      hash[el] = 1;
+    }
+  });
+  t.split('').forEach(el => {
+    if (hash[el]) {
+      hash[el] -= 1;
+    } else {
+      hash[el] = 1;
+    }
+  });
+
+  return Object.values(hash).every(el => el === 0);
+
+};

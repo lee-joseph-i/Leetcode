@@ -288,3 +288,68 @@ var isAnagram = function (s, t) {
   return Object.values(hash).every(el => el === 0);
 
 };
+
+//findAnagrams !!! was unable to understand solution.
+var findAnagrams = function(s, p) { 
+    let hash = {},  uniqueChars = 0;
+    for (let c of p) {
+        if (hash[c]==null) {
+            uniqueChars++;
+            hash[c] = 1;
+        } else {
+            hash[c]++;
+        }
+    }
+    
+    let res = [];
+    let left = 0, right = 0;
+    for (right;right<s.length;right++) {
+        if (hash[s[right]]!=null) hash[s[right]]--;
+        if (hash[s[right]]==0) uniqueChars--;
+        if (uniqueChars==0) res.push(left);
+        if (right - left + 1 == p.length) {
+            if (hash[s[left]]!=null) hash[s[left]]++;
+            if (hash[s[left++]]==1) uniqueChars++;
+        }
+    }
+    return res;
+};
+
+// var findAnagrams = function(s, p) {
+//     p = p.split('').sort().join('');
+//     let indices = [];
+//     let length = p.length;
+
+//     //gather key value pairs for p 
+//     let p_obj = {};
+//     for(let i = 0; i < p.length; i++){
+//         if(p_obj[p[i]]){
+//             p_obj[p[i]] += 1;
+//         } else {
+//             p_obj[p[i]] = 1;
+//         };
+//     };
+    
+
+//     //iterate through sections of s 
+//     //gather key value pairs for sections of s
+//     //compare with p hash
+//     //repeat
+//     for(let i = 0; i < s.length - length + 1; i++){
+//         let s_obj = {};
+//         let spliced = s.slice(i, i + length);
+//         if(spliced.split('').sort().join('') === p){
+//             indices.push(i)
+//         }
+//         // for(let j = 0; j < spliced.length; j++){
+//         //     if(s_obj[spliced[j]]){
+//         //         s_obj[spliced[j]] += 1;
+//         //     } else {
+//         //         s_obj[spliced[j]] = 1;
+//         //     }
+//         // };
+        
+//     };
+    
+//     return indices;
+// };

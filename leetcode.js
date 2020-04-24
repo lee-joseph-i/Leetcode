@@ -353,3 +353,133 @@ var findAnagrams = function(s, p) {
     
 //     return indices;
 // };
+
+
+// We have a robot
+// Starts a [0, 0]
+// Can move Up down left right 'u' 'd' 'l' r'
+// return whether the robot returns to [0,0]
+
+const robot = (directions) => { // directions = "lr"
+  let robot_pos = [0,0]; //if size of array was influenced by input, would influence space complexity.
+
+  // if "u", then [0, 1];
+  // if "d", then [0, -1];
+  // if "r", then [1, 0];
+  // if "l", then [-1, 0];
+
+  for(let i = 0; i < directions.length; i++){
+    if(directions[i] === 'u'){
+      robot_pos[1] += 1;
+    } else if (directions[i] === 'd'){
+      robot_pos[1] -= 1;
+    } else if (directions[i] === 'l'){
+      robot_pos[0] -= 1; // robot_pos = [-1, 0]
+    } else {
+      robot_pos[0] += 1; // robot_pos = [0, 0]
+    }
+  }
+
+  return (robot_pos[0] === 0 && robot_pos[1] === 0);
+};
+
+
+robot("lr");
+
+// time complexity is o(n)
+// space complexity is o(1)
+
+
+
+// self dividing number (cannot have 0)
+// 128 % 1 = 0
+// 128 % 2 = 0
+// 128 % 8 = 0
+
+
+// 124 % 4 = 0
+
+// L = 1, R = 22
+
+const selfDividingNums = (L, R) => {
+  //123 % 10 === 3
+  //12 % 10 == 2
+  //1 % 10 == 1
+  let answer = [];
+
+  const isSelfDividing = num => {
+    let string = num.toString();
+    string.forEach( el => {
+      if( num % el !== 0 && parseInt(num) !== 0) return false;
+    });
+    return true;
+  }
+
+
+  for(let i = L; i <= R; i++){
+    // if i is a self dividing number, then push i to answer array.
+    if(isSelfDividing(i)){
+      answer.push[i];
+    }
+  }
+
+  return answer;
+};
+
+
+
+selfDividingNums(1, 12);
+
+
+// Array of length n
+// Integers between 0 and n exclusive
+// Return numbers that appear more than once
+// [1, 2, 3, 3, 4] => 3
+// [3, 1, 2, 2, 5, 5] => 2 or 5
+// [0, 1, 2] <-- invalid
+// [1, 2, 3, 4] <-- invalid
+
+
+// [3, 1, 2, 2, 5, 5] => 2 or 5
+// [1, 2, 2, 3, 5, 5]
+const repeatedNums = array => {
+  sortedArray = array.sort((a, b) => a - b);
+
+  for (let i = 0; i < sortedArray.length; i++) { // 2
+    if (sortedArray[i] === sortedArray[i + 1]) return sortedArray[i];
+  }
+}
+
+// keep track of numbers in an set
+// check if number exists in set
+// return if it does
+
+const repeatedNums = array => {
+  const count = new Set();
+
+  array.forEach(num => {
+    if (count.has(num)) return num;
+    count.add(num);
+  });
+}
+
+// binaryTreePaths !!!
+var binaryTreePaths = function (root) {
+  let path = [];
+  let paths = [];
+
+  const dfs = (node) => {
+    if (!node) return;
+    path.push(node.val);
+
+    if (!node.right && !node.left) {
+      paths.push(path.join("->"));
+    }
+    if (node.left) dfs(node.left);
+    if (node.right) dfs(node.right);
+    path.pop(); // the unintuitive part, but IMPORTANT
+  };
+
+  dfs(root);
+  return paths;
+};

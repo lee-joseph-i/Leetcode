@@ -477,7 +477,7 @@ var binaryTreePaths = function (root) {
     }
     if (node.left) dfs(node.left);
     if (node.right) dfs(node.right);
-    path.pop(); // the unintuitive part, but IMPORTANT
+    path.pop(); // the unintuitive part, but IMPORTANT.
   };
 
   dfs(root);

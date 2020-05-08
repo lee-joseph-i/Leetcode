@@ -554,6 +554,26 @@ function addBinary(a, b) {
   return answer;
 }
 
+function addBinary(a, b) {
+  if (a.length < b.length) return addBinary(b, a);
+  let len = a.length;
+  let binary = "";
+  let carry = 0;
+  let j = b.length - 1;
+  for (let i = len - 1; i >= 0; i--) {
+    if (a[i] === "1") carry++;
+    if (j >= 0 && b[j--] === "1") carry++;
+    if (carry % 2 === 1) {
+      binary += "1";
+    } else {
+      binary += "0";
+    }
+    carry = Math.floor(carry / 2);
+  }
+  if (carry === 1) binary += "1";
+  return binary.split('').reverse().join('');
+}
+
 
 
 

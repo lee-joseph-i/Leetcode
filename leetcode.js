@@ -485,3 +485,140 @@ var binaryTreePaths = function (root) {
 };
 
 //
+
+
+
+// Given two binary strings,
+// return their sum(also a binary string).
+
+// The input strings are both non - empty and contains only characters 1 or 0.
+
+// console.log(addBinary("11", "1") === "100")
+// console.log(addBinary("1010", "1011") === "10101")
+// console.log(addBinary("1", "111") === "1000")
+// console.log(addBinary("1111", "1111") === "11110")
+
+//   1
+// +11
+// ---
+// 100
+// 1
+//    1
+//  111
+// 1000
+// Constraints:
+
+//   Each string consists only of '0' or '1' characters.
+// 1 <= a.length, b.length <= 10 ^ 4
+// Each string is either "0" or doesn 't contain any leading zero.
+
+// 1 = 1
+// 10 = 2
+// 11 = 3
+// 100 = 4
+// 101 = 5
+// 1010 = 10
+// 1 * 2^3 + 0 * 2^2 + 1 * 2^1 + 0 * 2^0 = 1010
+
+// "01" not valid
+
+// "1000" 
+// 8 4 2 1
+// 2^3 2^2 2^1 2^0
+// 
+
+
+// loop through string a, backwards
+// loop through string b, also backwards
+// add the elements 
+// initialize remainder as 0.
+// if there is no remainder,
+// if element.a + element.b + remainder > 1, then remainder = 1
+// and also push "0" into a variable to eventually output
+// else push "1" into the variable to eventually output
+
+function addBinary(a, b) {
+  if (a.length < b.length) return addBinary(b, a);
+  let answer = "";
+
+  a[-1] + b[-1]
+  for(let i=(a.length - 1); i >= 0; i--){
+    let remainder = 0;
+
+    if( a[i] + b[i] + remainder > 1){
+      answer += "0";
+      remainder = 1;
+    }
+  }
+
+  return answer;
+}
+
+
+
+
+// Isomorphic Strings
+// Overview: For two strings to be isomorphic, all occurrences of a character in 
+// string A can be replaced with another character to get string B.
+// The order of the characters must be preserved.There must be one - to - one mapping
+// for every char of string A to every char of string B.
+
+// paper and title would
+// return true.egg and sad would
+// return false.dgg and add would
+// return true.
+
+// isIsomorphic("egg", 'add'); // true
+// isIsomorphic("paper", 'title'); // true
+// isIsomorphic("kick", 'side'); // false
+
+// O(n2) Solution - Brute Force method
+
+// Iterate through every character in String a
+// Check that the character in String b at the same position, is mapped in the same positions as in string a
+// If anywhere it's not in the same position, return false
+// return true
+
+// O(n) - solution
+
+// Hashmap: iterating through egg
+// i = 0, strA[i] = "e"
+// if Hashmap[strA[i]] !== undefined 
+// Hashmap[strA[i]] = strB[i] 
+// else check if strB[i] === Hashmap[strA[i]]
+
+// if the strings are not the same length return false
+// create hashmap string a with value of the character at string b
+// Iterate through string a, adding to the hashmap and checking string b in each position
+// If any char is not in position, return false
+// return true
+
+console.log(isIsomorphic("egg", 'add')) // === true)
+console.log(isIsomorphic("paper", 'title')) //  === true)
+console.log(isIsomorphic("kick", 'side'))  // === false)
+console.log(isIsomorphic("eb", 'aa') === false)
+
+// i = 0 charCode["e"] = "a" newWord = a
+// i = 1 charcode["b"] = "a"
+// indexOf(strB[i]) !== i
+// new word = "afjd" === strB
+// HashB[strB[i]]
+
+function isIsomorphic(strA, strB) {
+  if (strA.length !== strB.length) return false;
+  let codeA = {};
+  let codeB = {};
+  for (let i = 0; i < strA.length; i++) {
+    if (codeA[strA[i]] === undefined) {
+      codeA[strA[i]] = strB[i];  
+      if (codeB[strB[i]] === undefined) {
+        codeB[strB[i]] = strA[i];
+      } else {
+        return false;
+      }
+    } else {
+      if (codeA[strA[i]] !== strB[i]) return false;
+    }
+  }
+  return true;
+}

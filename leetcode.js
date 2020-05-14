@@ -643,7 +643,7 @@ function isIsomorphic(strA, strB) {
   return true;
 }
 
-// keeping garden healthy
 // keep doing algos
 // isomorphic strings
 // addBinary
+//

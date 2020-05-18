@@ -646,3 +646,32 @@ function isIsomorphic(strA, strB) {
 // isomorphic strings
 // addBinary
 //
+
+//three coins
+
+// Given many coins of 3 different face values, print the combination sums of the coins up to 1000. Must be printed in order.
+
+//   eg: coins(10, 15, 55)
+// print:
+// 10
+// 15
+// 20
+// 25
+// 30
+//   .
+// .
+// .
+// 1000
+
+
+function threeCoins( c1, c2, c3){
+  let set = new Set;
+  set.add(0);
+
+  for(let i = 1; i <= 1000; i ++){
+    if (set.has(i - c1) || set.has(i - c2) || set.has(i - c3) ){
+      console.log(i);
+      set.add(i);
+    }
+  }
+}

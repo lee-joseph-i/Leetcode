@@ -675,3 +675,5 @@ function threeCoins( c1, c2, c3){
     }
   }
 }
+
+// battleship

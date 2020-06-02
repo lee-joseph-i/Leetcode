@@ -722,3 +722,86 @@ var countBattleships = function (board) {
 
 //   return sorted_scores
 // end
+
+
+// There are N rooms and you start in room 0.  Each room has a distinct number in 0, 1, 2, ..., N-1, and each room may have some keys to access the next room. 
+// Formally, each room i has a list of keys rooms[i], and each key rooms[i][j] is an integer in [0, 1, ..., N-1] where N = rooms.length.  A key rooms[i][j] = v opens the room with number v.
+// Initially, all the rooms start locked (except for room 0). 
+// You can walk back and forth between rooms freely.
+// Return true if and only if you can enter every room.
+// Example 1:
+// Input: [[1],[2],[3],[]]  
+// // each subarray resembles a room, which means 4 rooms
+// // the elements in each subarray represent keys for rooms. In other words, the first subarray element indicates that the first room has a key for room #1.
+
+
+// Output: true
+// Explanation:  
+// We start in room 0, and pick up key 1.
+// We then go to room 1, and pick up key 2.
+// We then go to room 2, and pick up key 3.
+// We then go to room 3.  Since we were able to go to every room, we return true.
+ 
+// Example 2:
+// Input: [[3],[1],[2],[0,1]] 
+// Output: false 
+// Explanation: We can't enter the room with number 2 in it
+
+
+// // First option: 
+// // We can iterate through the entire array. While iterating, we’ll store the provided index/indices from the subarray, until we go through every subarray. If all indices are found for array length n - 1, then we should be able to return true; otherwise, false. == linear operation. One for loop for iterating through the entire array, and a separate loop to check stored elements in a set against the range the array.length - 1. 
+
+
+// // drawbacks: 
+// // you’re iterating through the entire array which may be unnecessary and time intensive. You could potentially stop iterating once you’ve already found all the “keys” (or arr[i][j]). 
+
+
+
+
+
+// // every room is defined by a range of 0 to n - 1. For example, [0, 1, 2, 3] // done
+// // we can convert this into a set {0, 1, 2, 3} // done
+// // start with our for loop, going through arr[x]
+// // we’re at our first subarray:
+// //// if the subarray has a key, remove the key from the set. 
+// //// if set is empty, return true, otherwise, continue.
+// //// if the subarray does not have a key, then also continue.
+// //// if the subarray has multiple keys, in other words, that means we would need to do a nested loop to get each key from that subarray. This means worst scenario, runtime is o(n^2). 
+// //// we should eventually stop iterating when either the set is empty, or we have gone through every element. If set is not empty, we return false. 
+
+// //example input: [[3],[1],[2],[0,1]] 
+// // we have 4 rooms
+// // set should look like {0, 1, 2, 3}
+
+// // we can store another set of keys that we have.
+
+
+// const rooms_and_keys = rooms => {
+// 	(0..rooms.length - 1) // need to break this range into a set. 
+// 	let all_rooms = new Set
+// 	let my_keys = new Set
+// 	my_keys.add(0);
+
+// 	for( let i = 0; i < rooms.length; i++){
+// 		all_rooms.add(i);
+// 	}
+	
+// 	for( let i=0; i<rooms.length; i++){
+// 		if( my_keys.has(rooms[i] ){
+// 		for( let j = 0; j <rooms[i].length; j++){
+// 			all_rooms.remove(rooms[i][j])
+// 			my_keys.add(rooms[i][j])
+// 			if (all_rooms.length < 1) return true;
+// }
+// }	
+// }
+// 	if(all_rooms.length > 0) return false;
+
+// }
+
+
+// //stack  =[input[0]]  // []
+// While stack not empty
+// 	Room = Pop off top element of the stack //[3]
+// 	Loop through the room
+		

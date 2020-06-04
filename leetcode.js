@@ -805,3 +805,21 @@ var countBattleships = function (board) {
 // 	Room = Pop off top element of the stack //[3]
 // 	Loop through the room
 		
+
+
+function firstPositive(A) {
+  let set = new Set;
+  for (let i = 0; i < A.length; i++) {
+    if (A[i] > 0) {
+      set.add(A[i]);
+    }
+  }
+  let result;
+  for (let i = 1; i < A.length + 2; i++) {
+    if (!set.has(i)) {
+      result = i;
+      break;
+    }
+  }
+  return result;
+}

@@ -823,3 +823,29 @@ function firstPositive(A) {
   }
   return result;
 }
+
+var addTwoNumbers = function(l1, l2) {
+    let head = new ListNode(0);
+    let pos = head;
+    let sum = 0;
+    while (l2!==null || l1!==null || sum>0){
+        
+        pos.next = new ListNode(0);
+        pos = pos.next;
+        
+        if (l1!==null){
+            sum += l1.val;
+            l1 = l1.next;
+        }
+        if (l2!==null){
+            sum += l2.val;
+            l2 = l2.next;
+        }
+        
+        pos.val = sum%10;
+        // if(sum / 10 >= 0) sum = 1;
+        // if(sum / 10 < 0) sum = 0; //why does this time out?
+        sum = parseInt(sum/10);
+    }
+    return head.next;
+};

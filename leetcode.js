@@ -849,3 +849,15 @@ var addTwoNumbers = function(l1, l2) {
     }
     return head.next;
 };
+
+
+// Battleship variant.
+// Given a function that takes N, S, and T, output number of ships sunk and number of ships hit.
+// N = grid size int
+// S = topleft coordinate to bottomright coordinate of ships, separated by commas
+// T = coordinates hit separated by spaces
+// example, 
+// function solution(3, "1D 2E,1A 3A", "1D 2D 3D 3A")
+// notes: a ship cannot be greater than 2x2, but can be 1xN length
+// ships don't overlap
+// output should return a string e.g. '1,2'

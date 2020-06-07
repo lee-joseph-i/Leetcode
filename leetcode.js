@@ -861,3 +861,7 @@ var addTwoNumbers = function(l1, l2) {
 // notes: a ship cannot be greater than 2x2, but can be 1xN length
 // ships don't overlap
 // output should return a string e.g. '1,2'
+
+function battleships(N, S, T){
+  
+}

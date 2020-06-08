@@ -863,5 +863,70 @@ var addTwoNumbers = function(l1, l2) {
 // output should return a string e.g. '1,2'
 
 function battleships(N, S, T){
-  
+
 }
+
+
+var trap = function (height) {
+
+  //   let totalWater = 0;
+
+  //   for (let i = 1; i < height.length - 1; i++) {
+  //     let maxLeft = 0, maxRight = 0;
+
+  //     for (let j = i; j >= 0; j--) {
+  //       maxLeft = Math.max(maxLeft, height[j]);
+  //     }
+
+  //     for (let j = i; j < height.length; j++) {
+  //       maxRight = Math.max(maxRight, height[j]);
+  //     }
+
+  //     totalWater += (Math.min(maxLeft, maxRight) - height[i]);
+  //   }
+
+  //   return totalWater; 
+
+  let totalWater = 0;
+
+  const rightMaxArray = [];
+  const leftMaxArray = [];
+  const size = height.length
+
+  let leftMax = height[0];
+
+  for (let i = 0; i < size; i++) {
+    if (height[i] > leftMax) leftMax = height[i];
+
+    leftMaxArray[i] = leftMax;
+  }
+
+  let rightMax = height[size - 1];
+
+  for (let i = size - 1; i >= 0; i--) {
+    if (height[i] > rightMax) rightMax = height[i];
+
+    rightMaxArray[i] = rightMax;
+  }
+
+  for (let i = 0; i < size; i++) {
+    totalWater += Math.min(leftMaxArray[i], rightMaxArray[i]) - height[i];
+  }
+
+  return totalWater;
+
+  //       if(height.length < 3) return 0;
+
+  //   let currentCol = height[height.length - 1];
+  //   let rainWater = 0;
+
+  //   for(let i = height.length - 2; i >= 0; i--) {
+  //     if(currentCol >= height[i]) {
+  //       rainWater += currentCol - height[i];
+  //     } else {
+  //       currentCol = height[i];
+  //     }
+  //   }
+
+  //   return rainWater;
+};

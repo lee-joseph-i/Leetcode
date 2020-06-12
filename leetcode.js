@@ -930,3 +930,16 @@ var trap = function (height) {
 
   //   return rainWater;
 };
+
+var getDecimalValue = function(head) {
+    let binary_string = '';
+    
+    const dfs = node => {
+        if(!node) return '';
+        binary_string += node.val;
+        dfs(node.next);
+    };
+    
+    dfs(head);
+    return parseInt(binary_string, 2);
+};

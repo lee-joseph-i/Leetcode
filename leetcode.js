@@ -943,3 +943,12 @@ var getDecimalValue = function(head) {
     dfs(head);
     return parseInt(binary_string, 2);
 };
+
+var runningSum = function (nums) {
+  let increment = 0;
+  for (let i = 0; i < nums.length; i++) {
+    nums[i] = nums[i] + increment;
+    increment = nums[i];
+  };
+  return nums;
+};

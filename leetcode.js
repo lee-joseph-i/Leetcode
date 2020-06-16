@@ -963,3 +963,19 @@ var shuffle = function (nums, n) {
 
   return result;
 };
+
+var kidsWithCandies = function (candies, extraCandies) {
+  let max = 0;
+  for (let i = 0; i < candies.length; i++) {
+    if (candies[i] > max) max = candies[i];
+  };
+  let result = [];
+  for (let i = 0; i < candies.length; i++) {
+    if (candies[i] + extraCandies >= max) {
+      result.push(true);
+    } else {
+      result.push(false);
+    }
+  };
+  return result;
+};

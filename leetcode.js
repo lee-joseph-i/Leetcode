@@ -952,3 +952,7 @@ var runningSum = function (nums) {
   };
   return nums;
 };
+
+var shuffle = function (nums, n) {
+
+};

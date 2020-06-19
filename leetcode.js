@@ -979,3 +979,26 @@ var kidsWithCandies = function (candies, extraCandies) {
   };
   return result;
 };
+
+function kadanesAlgorithm(array) {
+  let maxSum = array[0]; // 3
+  let totalSum = maxSum; // 3
+  for( let i=0 ; i < array.length; i++){ // i = 0
+    let currentSum = array[i];
+    for( let j=0; j < array.length; j++){ // j = 2
+      if( j > i ){ //true
+        currentSum += array[j]; // 8 - 9 = -1
+      }
+    }
+    if(currentSum > maxSum){ // true
+      maxSum = currentSum;  // maxSum = 8
+    }
+  }
+  return maxSum;
+}
+//let array = [3, 5, -9, 100]
+// output = 100
+//first thoughts:
+// iterate through the array, holding onto a max sum variable.
+// as I add array[i + 1], check currentSum against maxSum.
+// if greater, then we set maxSum to currentSum.

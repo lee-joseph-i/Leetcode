@@ -1002,3 +1002,13 @@ function kadanesAlgorithm(array) {
 // iterate through the array, holding onto a max sum variable.
 // as I add array[i + 1], check currentSum against maxSum.
 // if greater, then we set maxSum to currentSum.
+
+
+var maxProduct = function (nums) {
+  //nums is an array of integers [1,2,3]
+  //choose 2 indices i and j
+  //find two highest elements, subtract each by one, then multiply and return
+
+  let sorted = nums.sort((a, b) => b - a);
+  return (sorted[0] - 1) * (sorted[1] - 1);
+};

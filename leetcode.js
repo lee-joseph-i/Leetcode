@@ -1012,3 +1012,22 @@ var maxProduct = function (nums) {
   let sorted = nums.sort((a, b) => b - a);
   return (sorted[0] - 1) * (sorted[1] - 1);
 };
+
+var toLowerCase = function (str) {
+  let lower = "abcdefghijklmnopqrstuvwxyz";
+  let upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  let hash = {};
+  for (let i = 0; i < lower.length; i++) {
+    hash[upper[i]] = lower[i];
+  }
+  let result = "";
+  for (let i = 0; i < str.length; i++) {
+    if (hash[str[i]]) {
+      result += hash[str[i]];
+    } else {
+      result += str[i];
+    }
+  }
+
+  return result;
+};

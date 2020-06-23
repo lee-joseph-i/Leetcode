@@ -1031,3 +1031,16 @@ var toLowerCase = function (str) {
 
   return result;
 };
+
+var busyStudent = function (startTime, endTime, queryTime) {
+  //gather a count of students who fall within accepted parameter.
+  //loop through both arrays using a singular for loop.
+  //check start and end points per iteration and see if it inclusively falls within target.
+  // count increments if so.
+
+  let count = 0;
+  for (let i = 0; i < startTime.length; i++) {
+    if (queryTime >= startTime[i] && queryTime <= endTime[i]) count++;
+  }
+  return count;
+};

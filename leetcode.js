@@ -1044,3 +1044,33 @@ var busyStudent = function (startTime, endTime, queryTime) {
   }
   return count;
 };
+
+var oddCells = function (n, m, indices) {
+  //n = number of arrays
+  //m = number of subarrays (or elements in each array)
+
+  //iterate through indices
+  //indices[i] = [ri, ci]
+  //go through the entire row of ri and add +1 to each... ? break this down
+  //so if ri = 0, that means look at n = 0 and m = 0 to m - 1
+  // so ri is basically n.
+  //and if ci = 1, that means look at n = 0 TO n-1, and m = 1
+  // so ci is basically m.
+  //iterate and check for odd values
+
+  // this also works!
+  // let array = new Array(n);
+  // for(let i=0; i<array.length; i++){
+  //     array[i] = new Array(m);
+  // }
+
+  let array = new Array(n).fill(0).map((row) => new Array(m).fill(0));
+
+  for (let i = 0; i < indices.length; i++) {
+    let row = indices[0];
+    let col = indices[1];
+    array[row].forEach((el) => {
+      el += 1;
+    });
+  }
+};

@@ -1058,6 +1058,8 @@ var oddCells = function (n, m, indices) {
   // so ci is basically m.
   //iterate and check for odd values
 
+  let count = 0;
+
   // this also works!
   // let array = new Array(n);
   // for(let i=0; i<array.length; i++){
@@ -1067,10 +1069,23 @@ var oddCells = function (n, m, indices) {
   let array = new Array(n).fill(0).map((row) => new Array(m).fill(0));
 
   for (let i = 0; i < indices.length; i++) {
-    let row = indices[0];
-    let col = indices[1];
-    array[row].forEach((el) => {
-      el += 1;
+    let row = indices[i][0];
+    let col = indices[i][1];
+    // array[row].forEach(el => {
+    //     console.log("test!")
+    //     el++; //this doesn't work for some reason.
+    // });
+    for (let j = 0; j < array[0].length; j++) {
+      array[row][j]++;
+    }
+    array.forEach((subArr) => {
+      subArr[col]++;
     });
   }
+  for (let i = 0; i < array.length; i++) {
+    for (let j = 0; j < array[0].length; j++) {
+      if (array[i][j] % 2 != 0) count++;
+    }
+  }
+  return count;
 };

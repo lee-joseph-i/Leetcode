@@ -1104,3 +1104,48 @@ var maximum69Number = function (num) {
   }
   return parseInt(result);
 };
+
+
+
+function fourSums(array, targetSum){ //[7, 6, 4, -1, 1, 2], 16
+  //array is nonempty
+  //target is an integer
+  let result = []; //[[7,6,4,1]]
+
+  //brute force n^4 solution
+  for(let i=0; i<array.length - 3; i++){
+    for(let j=i+1; j<array.length - 2; j++){
+      for(let k=j+1; k<array.length - 1; k++){
+        for(let l=k+1; l<array.length; l++){
+          if(array[i] + array[j] + array[k] + array[l] === targetSum){
+            result.push([array[i], array[j], array[k], array[l]]); //[7, 6, 4, -1]
+          };
+        };
+      };
+    };
+  };
+  return result;
+
+  
+}
+
+
+// console.log(fourSums([1, 2, 3, 4, 5, 6, 7], 10));
+
+// time: On^3 space: On^2
+
+
+// new Set
+// {1, 2, 3, 4, 5, 6, 7}
+// try to do a three Sums with a brute force n^3 triple loop. 
+// subtract every threeSums to the targetSum, then do a lookup operation to see if that result exists within the set (unused elements in the array)
+// for(){ 
+//   for(){ 
+//     for(){
+
+//     }
+//   }
+//   for(){
+    
+//   }
+// }

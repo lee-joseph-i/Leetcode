@@ -1089,3 +1089,18 @@ var oddCells = function (n, m, indices) {
   }
   return count;
 };
+
+var maximum69Number = function (num) {
+  let toS = num.toString();
+  let result = "";
+  for (let i = 0; i < toS.length; i++) {
+    if (toS[i] === "6") {
+      result += "9";
+      if (i < toS.length) result += toS.slice(i + 1, toS.length);
+      break;
+    } else {
+      result += toS[i];
+    }
+  }
+  return parseInt(result);
+};

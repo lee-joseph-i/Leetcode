@@ -1149,3 +1149,20 @@ function fourSums(array, targetSum){ //[7, 6, 4, -1, 1, 2], 16
     
 //   }
 // }
+
+
+var destCity = function (paths) {
+  // we're essentially going through each subarray
+  // recording all the last index of each subarray
+  // and output the one that doesn't exist in a first index
+
+  let list = new Set();
+  for (let i = 0; i < paths.length; i++) {
+    list.add(paths[i][1]);
+  }
+  for (let i = 0; i < paths.length; i++) {
+    list.delete(paths[i][0]);
+  }
+
+  return list.values().next().value;
+};

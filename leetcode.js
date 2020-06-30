@@ -1166,3 +1166,25 @@ var destCity = function (paths) {
 
   return list.values().next().value;
 };
+
+var freqAlphabets = function (s) {
+  // i could do backwards lookback
+  // if there's a #, then i look at the next two numbers
+  // if it's a number, i just go by the number alone.
+
+  alphabet = "abcdefghijklmnopqrstuvwxyz";
+  let result = [];
+
+  for (let i = s.length - 1; i >= 0; i--) {
+    if (s[i] === "#") {
+      //grab s[i - 2] then s[i - 1]
+      result.unshift(
+        alphabet[parseInt(s[i - 2].toString() + s[i - 1].toString() - 1)]
+      );
+    } else if (s[i + 1] !== "#" && s[i + 2] !== "#") {
+      result.unshift(alphabet[s[i] - 1]);
+    }
+  }
+
+  return result.join("");
+};

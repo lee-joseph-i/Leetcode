@@ -1189,12 +1189,36 @@ var freqAlphabets = function (s) {
   return result.join("");
 };
 
-const replaceElements = (arr) => {
-  result = [];
-  while (arr.length > 1) {
-    arr.shift();
-    result.push(Math.max(...arr));
+var replaceElements = function (arr) {
+  // result = [];
+  // while (arr.length > 1) {
+  //   arr.shift();
+  //   result.push(Math.max(...arr));
+  // }
+  // result.push(-1);
+  // return result;
+
+  // max = 0
+
+  // second to last el = last el
+  // if second to last > last, max = second to last, vice versa
+  //
+  // let result = [];
+  let lastEl = arr[arr.length - 1]; // 1
+  let max = lastEl; // 1
+
+  let secondtoLastEl = arr[arr.length - 2]; //6
+  arr[arr.length - 2] = lastEl;
+
+  if (secondtoLastEl > lastEl) max = secondtoLastEl; // 6 > 1, max = 6
+
+  for (let i = arr.length - 3; i >= 0; i--) {
+    let current = arr[i];
+    arr[i] = max;
+    if (current > max) max = current;
   }
-  result.push(-1);
-  return result;
+
+  arr[arr.length - 1] = -1;
+
+  return arr;
 };

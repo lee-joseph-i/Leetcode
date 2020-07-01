@@ -1188,3 +1188,13 @@ var freqAlphabets = function (s) {
 
   return result.join("");
 };
+
+const replaceElements = (arr) => {
+  result = [];
+  while (arr.length > 1) {
+    arr.shift();
+    result.push(Math.max(...arr));
+  }
+  result.push(-1);
+  return result;
+};

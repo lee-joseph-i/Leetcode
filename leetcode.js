@@ -1231,3 +1231,21 @@ var isSubsequence = function (s, t) {
   }
   return false;
 };
+
+var arrangeCoins = function (n) { // n = 5
+  let count = 0;
+  let row = 0;
+
+  while (n > 0) {
+    row += 1;
+    if (n - row >= 0) {
+      count += 1;
+      n -= row;
+    } else {
+      n = 0;
+    };
+  };
+
+  return count;
+};
+

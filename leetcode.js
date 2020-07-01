@@ -1222,3 +1222,12 @@ var replaceElements = function (arr) {
 
   return arr;
 };
+
+var isSubsequence = function (s, t) {
+  let target = 0;
+  for (let i = 0; i < t.length; i++) {
+    if (t[i] === s[target]) target += 1;
+    if (target === s.length) return true;
+  }
+  return false;
+};

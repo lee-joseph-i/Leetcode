@@ -1249,3 +1249,27 @@ var arrangeCoins = function (n) { // n = 5
   return count;
 };
 
+
+var isPalindrome = function(head) {
+    if (head === null || head.next === null) return true;
+    let nums = [head.val];
+    let slow = head, fast = head;
+    while(fast.next !== null && fast.next.next !== null){
+      // ex 1=> 2 => 3 => 3 => 2 => 1
+        slow = slow.next; 
+        // slow = 2 => 3; fast = 3 => 2;
+        fast = fast.next.next;
+        nums.push(slow.val)
+    }
+    // at this point, nums will be [1, 2, 3] and that's it
+    if (fast.next === null){
+        nums.pop();
+    }
+    while (slow.next !== null){
+        slow = slow.next;
+        if (nums.pop() !== slow.val){
+            return false;
+        }
+    }
+    return true;
+};

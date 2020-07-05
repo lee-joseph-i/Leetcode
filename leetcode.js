@@ -1273,3 +1273,58 @@ var isPalindrome = function(head) {
     }
     return true;
 };
+
+
+var nthUglyNumber = function (n) {
+  // The below code is brute force that does not satisfy large number test cases, understanding how the math works here is the key to reducing runtime.
+
+  //     let uglyNumbers = [1,2,3,4,5,6,8,9];
+  //     if(n === 1) return uglyNumbers[n-1];
+
+  //     const isUgly = num => {
+  //         for(let j=Math.round(uglyNumbers.length / 5); j<uglyNumbers.length; j++){
+  //           if(uglyNumbers[j] * 2 === num || uglyNumbers[j] * 3 === num || uglyNumbers[j] * 5 === num){
+  //             return true;  
+  //           };
+  //         };
+  //         return false;
+  //     };
+
+  //     let i=10;
+  //     while(uglyNumbers.length + 1 <= n){
+  //         if(isUgly(i)){
+  //             uglyNumbers.push(i);
+  //         };
+  //         i++;
+  //     };
+  //     return uglyNumbers[n-1];
+
+
+  let uglyNum = 1;
+  let count = 1;
+  let multiQueue = [[], [], []];
+  let seen = {};
+  while (count < n) {
+    let ugly2 = uglyNum * 2;
+    let ugly3 = uglyNum * 3;
+    let ugly5 = uglyNum * 5;
+    if (!seen[ugly2]) {
+      multiQueue[0].push(ugly2)
+      seen[ugly2] = true;
+    }
+    if (!seen[ugly3]) {
+      multiQueue[1].push(ugly3)
+      seen[ugly3] = true;
+    }
+    if (!seen[ugly5]) {
+      multiQueue[2].push(ugly5)
+      seen[ugly5] = true;
+    }
+    let UglyQueue = multiQueue.reduce((acc, queue) => {
+      return acc[0] <= queue[0] ? acc : queue;
+    })
+    uglyNum = UglyQueue.shift();
+    count++
+  }
+  return uglyNum
+};

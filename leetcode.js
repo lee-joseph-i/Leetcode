@@ -1328,3 +1328,17 @@ var nthUglyNumber = function (n) {
   }
   return uglyNum
 };
+
+var hammingDistance = function (x, y) {
+
+  // XOR will give you the difference in decimal. You convert that to binary and
+  // however many 1s there are determines the hamming distance.
+  
+  let diff = x ^ y;
+  let string = diff.toString(2);
+  let count = 0;
+  for (let i = 0; i < string.length; i++) {
+    if (string[i] === '1') count++;
+  };
+  return count;
+};

@@ -1333,7 +1333,7 @@ var hammingDistance = function (x, y) {
 
   // XOR will give you the difference in decimal. You convert that to binary and
   // however many 1s there are determines the hamming distance.
-  
+
   let diff = x ^ y;
   let string = diff.toString(2);
   let count = 0;
@@ -1341,4 +1341,25 @@ var hammingDistance = function (x, y) {
     if (string[i] === '1') count++;
   };
   return count;
+};
+
+var plusOne = function (digits) {
+  let carry = 1;
+  let i = 1;
+
+  while (carry >= 1) {
+    //need to unshift integer 1 if the array ends.
+    //need to ++ array[array.length - i] if the array doesn't end.
+    if (digits[digits.length - i] === undefined) {
+      digits.unshift(1);
+      carry--;
+    } else if (digits[digits.length - i] + 1 >= 10) {
+      digits[digits.length - i] = (digits[digits.length - i] + 1) % 10;
+    } else {
+      digits[digits.length - i]++;
+      carry--;
+    }
+    i++;
+  };
+  return digits;
 };

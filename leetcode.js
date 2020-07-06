@@ -1363,3 +1363,45 @@ var plusOne = function (digits) {
   };
   return digits;
 };
+
+
+function favoriteRestaurant(requests, restaurants) {
+  //go through requests
+  //have a count-type variable that keeps track of what each user wants
+  // go for a nested loop, top layer goes through restaurants as we go through each request.
+
+  // restaurants: “Name”,  “Cuisine”, “Price”, “Points”
+  // requests: “Name”(of user), “Cuisine”, “Price”
+
+  // iterate through restaurants, give it a new key-value called “points”: 0 counter
+
+  for (let i = 0; i < restaurants.length; i++) {
+    restaurants[i][points] = 0;
+  }
+
+  for (let i = 0; i < restaurants.length; i++) {
+    for (let j = 0; j < requests.length; j++) {
+      if (restaurants[i].hasValue(requests[j][“Cuisine”]) restaurants[i][“Points”]++;
+      if (restaurants[i][“Price”].length >= requests[j][“Price”].length) restaurants[i][“Points”]++;
+    }
+
+    let mostFavoriteRestaurant = restaurants[0]
+
+    for (let i = 1; i < restaurants.length; i++) {
+      if (restaurants[i][“Points”] >= mostFavoriteRestaurant[“Points”]{
+        mostFavoriteRestaurant = restaurants[i];
+      };
+    };
+
+    return mostFavoriteRestaurant[“Name”];
+
+    //  considerations:
+    // - what if two restaurants have the same amount of points?
+    // - practically, suggest to sort it! Have a most popular restaurant followed by the next.
+
+    // constraints:
+    // - 0.2 mile radius of restaurants (so likely less than 100 restaurants)
+    // - likely anywhere from 3-30 requests (or more if we think about online catering for the entire office).
+    // - both constraints are helpful to determine efficiency-necessity. These are fairly low data inputs that even a   //quadratic runtime will likely not impact user experience.
+  }
+};

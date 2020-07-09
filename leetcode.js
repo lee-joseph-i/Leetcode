@@ -1420,3 +1420,78 @@ var islandPerimeter = function (grid) {
   };
   return perimeter;
 };
+
+var threeSum = function (nums) {
+
+  //     let hash = {};
+  //     for(let i=0; i<nums.length; i++){
+  //         if(hash[nums[i]]){
+  //             hash[nums[i]]++;
+  //         } else {
+  //             hash[nums[i]] = 1;
+  //         };
+  //     };
+
+  //     let sorted = nums.sort((a,b) => a - b);
+
+  //     let result = [];
+
+  //     for(let i=0; i<sorted.length - 2; i++){
+  //         for(let j=i+1; j<sorted.length - 1; j++){
+  //             hash[sorted[i]]--;
+  //             hash[sorted[j]]--;
+  //             let twoSum = sorted[i] + sorted[j];
+  //             if(hash[-twoSum] > 0){
+  //               result.push([sorted[i], sorted[j], -twoSum]);
+  //             };
+  //             hash[sorted[i]]++;
+  //             hash[sorted[j]]++;
+  //         };
+  //     };
+
+  //     for(let i=0; i<result.length; i++){
+  //         result[i].sort((a, b) => a - b);
+  //     };
+
+  //     let stringified = [];
+  //     for(let i=0;i<result.length;i++){
+  //       stringified.push(result[i].toString());  
+  //     };
+  //     for(let i=0; i<result.length - 1; i++){
+  //         for(let j=i+1; j<result.length; j++){
+  //             if(stringified[i] === stringified[j]){
+  //               result.splice(j, 1);
+  //                 stringified.splice(j, 1);
+  //                 j--;
+  //             };
+  //         };
+  //     };
+
+  //     return result;
+
+  let sorted = nums.sort((a, b) => a - b);
+  let result = [];
+
+  for (let i = 0; i < sorted.length; i++) {
+    let j = i + 1;
+    let k = sorted.length - 1;
+    if (i !== 0 && sorted[i] === sorted[i - 1]) continue;
+
+    while (j < k) {
+      let sum = sorted[i] + sorted[j] + sorted[k];
+      if (sum < 0) {
+        j++;
+      } else if (sum > 0) {
+        k--;
+      } else if (sum === 0) {
+        result.push([sorted[i], sorted[j], sorted[k]]);
+        while (sorted[j] === sorted[j + 1]) j++;
+        while (sorted[k] === sorted[k - 1]) k--;
+        j++;
+        k--;
+      };
+    };
+  };
+
+  return result;
+};

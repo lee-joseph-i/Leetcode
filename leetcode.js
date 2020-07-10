@@ -1495,3 +1495,33 @@ var threeSum = function (nums) {
 
   return result;
 };
+
+const widthOfBinaryTree = root => {
+  if (!root.left && !root.right) return 1;
+  let max = 0;
+  let queue = [root];
+  let bank = [];
+
+  while (true) {
+    while (queue.length) {
+      let node = queue.shift();
+      if (node === null) {
+        bank.push(null, null);
+      } else {
+        bank.push(node.left, node.right);
+      };
+    };
+
+    let leftPointer = 0; //or left index
+    let rightPointer = bank.length - 1; // or right index
+    while (bank[leftPointer] === null) leftPointer++;
+    while (bank[rightPointer] === null) rightPointer--;
+    if (leftPointer > rightPointer) {
+      return max;
+    } else {
+      queue = bank.slice(leftPointer, rightPointer + 1);
+      max = Math.max(max, queue.length);
+      bank = [];
+    };
+  };
+};

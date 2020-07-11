@@ -1525,3 +1525,72 @@ const widthOfBinaryTree = root => {
     };
   };
 };
+
+
+var flatten = function (head) {
+  //start head as the node
+  //get the node, then node.next
+  //if it has a child, get a new list stored
+  //store that list with the child, followed by next
+  //and so forth
+  //     let flatList = [];
+
+  //     let queue = [head];
+  //     while(queue.length){
+  //         let node=queue.shift();
+  //         flatList.push(node);
+  //         let secondaryQueue = [];
+  //         // if(node.child) secondaryQueue.push(node.child);
+  //         while(node.child){
+  //             let childNode = secondaryQueue.shift();
+  //             flatList.push(childNode);
+  //         };
+  //         queue.push(node.next);
+  //     };
+
+  //     return flatList;
+
+  //     if (!head) return null;
+  //     let dummyHead = new Node(0, null, head, null);
+
+  //     let stack = [head];
+  //     let current = dummyHead;
+  //     let prev = null;
+
+  //     while(stack.length!=0) {        
+  //         current = stack.pop();
+
+  //         if (prev) {
+  //             current.prev = prev;
+  //             prev.next = current;
+  //         } 
+
+  //         if (current.next!=null) stack.push(current.next);
+  //         if (current.child!=null) { // has a child
+  //             stack.push(current.child);
+  //             current.child = null; // remove child reference
+  //         }
+
+  //         prev = current;   
+  //     }
+
+  //     return dummyHead.next;
+
+  if (!head) return head;
+  let stack = []; //store all rest part of linkedlist nodes when has child
+  let cur = head;
+  while (cur) {
+    if (cur.child) {
+      if (cur.next) stack.push(cur.next);  //must check cur.next is null or not before added to stack
+      cur.next = cur.child;
+      cur.next.prev = cur; //because it is doubly linkedlist
+      cur.child = null; //already assigned to next so now no child anymore. set null
+    }
+    else if (!cur.next && stack.length != 0) { //now reach tail of linkedlist 
+      cur.next = stack.pop();
+      cur.next.prev = cur; // because it is doubly linkedlist
+    }
+    cur = cur.next;
+  }
+  return head; //return reference of head
+};

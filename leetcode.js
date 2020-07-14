@@ -1594,3 +1594,23 @@ var flatten = function (head) {
   }
   return head; //return reference of head
 };
+
+var isSameTree = function (p, q) {
+  let result = true;
+  const dfs = (p, q) => {
+    if (!!p && !!q) {
+      if (p.val !== q.val) {
+        result = false;
+        return;
+      };
+      dfs(p.left, q.left);
+      dfs(p.right, q.right);
+    };
+    if ((!!p && !q) || (!p && !!q)) {
+      result = false;
+      return;
+    };
+  };
+  dfs(p, q);
+  return result;
+};

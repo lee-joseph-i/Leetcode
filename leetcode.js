@@ -1614,3 +1614,16 @@ var isSameTree = function (p, q) {
   dfs(p, q);
   return result;
 };
+
+var reverseWords = function (s) {
+  let split = s.split(" ")
+
+  let result = [];
+
+  for (let i = split.length - 1; i >= 0; i--) {
+    if (split[i] !== " " && split[i].length > 0) {
+      result.push(split[i]);
+    };
+  };
+  return result.join(" ");
+};

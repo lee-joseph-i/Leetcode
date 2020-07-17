@@ -1627,3 +1627,21 @@ var reverseWords = function (s) {
   };
   return result.join(" ");
 };
+
+var myPow = function (x, n) {
+  // dynamic programming solution
+  const memo = new Map([[1, x]]);
+  let p = Math.abs(n), r = 0, result = 1;
+
+  while (r < p) {
+    for (let [key, val] of Array.from(memo).reverse()) {
+      if (r + key <= p) {
+        r += key;
+        result *= val;
+        memo.set(r, result);
+        break;
+      }
+    }
+  }
+  return n < 0 ? 1 / result : result;
+};

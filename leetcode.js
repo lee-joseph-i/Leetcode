@@ -1703,3 +1703,27 @@ var findOrder = function (numCourses, prerequisites) {
   }
   return numCourses === 0 ? res : [];
 };
+
+var removeElements = function (head, val) {
+  let node = head;
+  let previous = null;
+
+  while (node) {
+    if (node.val === val && previous === null) {
+      head = node.next;
+      node = node.next;
+      continue;
+    };
+    if (node.val === val && previous !== null) {
+      console.log(head)
+      previous.next = node.next;
+      console.log(head)
+      console.log("---")
+    } else {
+      previous = node;
+    };
+    node = node.next;
+  };
+
+  return head;
+};

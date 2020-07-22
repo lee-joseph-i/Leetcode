@@ -1744,3 +1744,27 @@ var removeElements = function (head, val) {
 
   return head;
 };
+
+
+const exist = (board, word) => {
+  let seen = {};
+  for (let i = 0; i < board.length; i++) {
+    for (let j = 0; j < board[i].length; j++) {
+      if (board[i][j] === word[0] && buildWord(board, word, j, i)) return true;
+    };
+  };
+  return false;
+};
+const buildWord = (board, word, x, y, currentWord = "") => {
+  if (word === currentWord) return true;
+  if (board[y]?.[x] !== word[currentWord.length]) return false;
+  let char = board[y][x]
+  currentWord += char;
+  board[y][x] = "-"
+  let top = buildWord(board, word, x, y - 1, currentWord);
+  let right = buildWord(board, word, x + 1, y, currentWord);
+  let bottom = buildWord(board, word, x, y + 1, currentWord);
+  let left = buildWord(board, word, x - 1, y, currentWord);
+  if (top || right || bottom || left) return true;
+  board[y][x] = char;
+};

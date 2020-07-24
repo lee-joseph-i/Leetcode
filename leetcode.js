@@ -1796,3 +1796,22 @@ var zigzagLevelOrder = function (root) {
     return traversed;
   }
 };
+
+var singleNumber = function (nums) {
+  let res = 0;
+
+  for (let num of nums) res ^= num
+  // xor of two numbers both cannot be equal (if equal then xor will be 0)
+
+  res &= -res; // getting the last set bit
+
+  let ans = [0, 0] // this is the result
+  for (let num of nums) {
+    if (res & num) ans[0] ^= num;
+    // if the bit at the position is 1 then we xor for for the first group
+    else ans[1] ^= num;
+    // if not other group
+  }
+
+  return ans;
+};

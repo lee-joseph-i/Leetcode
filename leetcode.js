@@ -1835,3 +1835,20 @@ function hashMap(queryType, query) {
   console.log(hash)
   return sum;
 };
+
+var addDigits = function (num) {
+  if (num < 10) return num;
+
+  let result = num;
+
+  while (result > 9) {
+    let string = result.toString();
+    result = 0;
+    for (let i = 0; i < string.length; i++) {
+      result += parseInt(string[i]);
+    };
+
+  };
+
+  return result;
+};

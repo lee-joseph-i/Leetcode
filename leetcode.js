@@ -1819,20 +1819,19 @@ var singleNumber = function (nums) {
 function hashMap(queryType, query) {
   let hash = {};
   let sum = 0;
+  let keyCounter = 0;
+  let valueCounter = 0;
   for (let i = 0; i < query.length; i++) {
     if (queryType[i] === "insert") {
-      hash[query[i][0]] = query[i][1];
+      hash[query[i][0] - keyCounter] = query[i][1] - valueCounter;
     } else if (queryType[i] === "addToKey") {
-      for (let key in hash) {
-        hash[key + query[i][0]] = hash[key];
-      }
+      keyCounter += query[i][0];
     } else if (queryType[i] === "addToValue") {
-      for (let key in hash) hash[key] += query[i][0];
+      valueCounter += query[i][0];
     } else {
-      sum += hash[query[i][0]];
+      sum += hash[query[i][0] - keyCounter] + valueCounter;
     };
   };
-  console.log(hash)
   return sum;
 };
 

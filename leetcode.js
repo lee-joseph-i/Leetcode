@@ -1862,3 +1862,23 @@ var buildTree = function (inorder, postorder) {
     right: buildTree(inorder.slice(pivot + 1), postorder.slice(pivot, -1))
   };
 };
+
+
+const prefixS = (a, b) => {
+  // a is the array of strings
+  // b is the array of strings that we need to check for prefix strings
+  // can start by creating a list of all potential prefix-strings
+  let prefixSCollection = [];
+  let prefixes;
+  let combinedPrefixes;
+  for (let i = 0; i < a.length; i++) {
+    prefixes = a.slice(0, i + 1);
+    combinedPrefixes = prefixes.join('');
+    prefixSCollection.push(combinedPrefixes);
+  };
+  //iterate through b, and if any of the elements do not exist in prefixSCollection, return false;
+  for (let i = 0; i < b.length; i++) {
+    if (!prefixSCollection.includes(b[i])) return false;
+  };
+  return true;
+}

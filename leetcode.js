@@ -1876,3 +1876,19 @@ const pS = (a, b) => {
   };
   return true;
 }
+
+var isPalindrome = function (s) {
+  let alphabet = "abcdefghijklmnopqrstuvwxyz";
+  let numbers = "0123456789"
+
+  let alphaNumerics = s.split("").filter(ele => alphabet.includes(ele.toLowerCase()) || numbers.includes(ele));
+
+  for (let i = 0; i < alphaNumerics.length; i++) {
+    if (Number.isInteger(alphaNumerics[i])) {
+      if (alphaNumerics[i] !== alphaNumerics[alphaNumerics.length - 1 - i]) return false;
+    } else {
+      if (alphaNumerics[i].toLowerCase() !== alphaNumerics[alphaNumerics.length - 1 - i].toLowerCase()) return false;
+    }
+  };
+  return true;
+};

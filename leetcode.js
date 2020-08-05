@@ -1892,3 +1892,12 @@ var isPalindrome = function (s) {
   };
   return true;
 };
+
+var isPowerOfFour = function (num) {
+  let n = 0;
+  while (Math.pow(4, n) <= num) {
+    if (Math.pow(4, n) === num) return true;
+    n++
+  };
+  return false;
+};

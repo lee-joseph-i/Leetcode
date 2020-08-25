@@ -1918,3 +1918,22 @@ var longestPalindrome = function(s) {
 
     return count + (set.size > 0 ? 1 : 0);
 };
+
+var countNegatives = function(grid) {
+    
+    let count = 0;
+    
+    //brute force simple solution: iterate through chronologically index-wise
+    for(let i=0; i<grid.length; i++){
+        for(let j=0; j<grid[i].length; j++){
+            // if(grid[i][j] < 0) count++;
+            if(grid[i][j] < 0){
+                //this is somehow slower...
+                count += grid[i].length - j;
+                j=grid[i].length;
+            };
+        };
+    };
+    
+    return count;
+};

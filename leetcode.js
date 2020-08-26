@@ -1958,3 +1958,17 @@ var sumZero = function (n) {
 
   return result;
 };
+
+var flipAndInvertImage = function (A) {
+  let result = [];
+
+  for (let i = 0; i < A.length; i++) {
+    let temp = [];
+    for (let j = A[i].length - 1; j >= 0; j--) {
+      A[i][j] === 1 ? temp.push(0) : temp.push(1);
+    };
+    result.push(temp);
+  };
+
+  return result;
+};

@@ -1937,3 +1937,24 @@ var countNegatives = function(grid) {
     
     return count;
 };
+
+
+var sumZero = function (n) {
+  if (n === 0) return [0];
+
+  let result = [];
+
+  if (n % 2 !== 0) {
+    result.push(0);
+    n--;
+  };
+
+  let i = 1;
+  while (n > 0) {
+    result.push(i, -i);
+    n -= 2;
+    i++;
+  };
+
+  return result;
+};

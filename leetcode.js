@@ -753,7 +753,7 @@ var countBattleships = function (board) {
 
 
 // // drawbacks: 
-// // you’re iterating through the entire array which may be unnecessary and time intensive. You could potentially stop iterating once you’ve already found all the “keys” (or arr[i][j]). 
+// // you’re iterating through the entire array which may be unnecessary and time intensive. You could potentially stop iterating once you’ve already found all the "keys” (or arr[i][j]). 
 
 
 
@@ -1381,19 +1381,19 @@ function favoriteRestaurant(requests, restaurants) {
 
   for (let i = 0; i < restaurants.length; i++) {
     for (let j = 0; j < requests.length; j++) {
-      if (restaurants[i].hasValue(requests[j][“Cuisine”]) restaurants[i][“Points”]++;
-      if (restaurants[i][“Price”].length >= requests[j][“Price”].length) restaurants[i][“Points”]++;
+      if (restaurants[i].hasValue(requests[j]["Cuisine"])) restaurants[i]["Points"]++;
+      if (restaurants[i]["Price"].length >= requests[j]["Price"].length) restaurants[i]["Points"]++;
     }
 
     let mostFavoriteRestaurant = restaurants[0]
 
     for (let i = 1; i < restaurants.length; i++) {
-      if (restaurants[i][“Points”] >= mostFavoriteRestaurant[“Points”]{
+      if (restaurants[i]["Points"] >= mostFavoriteRestaurant["Points"]){
         mostFavoriteRestaurant = restaurants[i];
       };
     };
 
-    return mostFavoriteRestaurant[“Name”];
+    return mostFavoriteRestaurant["Name"];
 
     //  considerations:
     // - what if two restaurants have the same amount of points?

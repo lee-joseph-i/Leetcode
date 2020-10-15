@@ -18,11 +18,10 @@ var sortString = function (s) {
       }
     }
 
-    if (sorted.length === 0) break;
+    if (sorted.length === 0) break; //gotta keep this in mind in the future. when you're splicing, you'll need to constantly keep track of what's left.
     let largestChar = sorted.splice(sorted.length - 1, 1)[0];
     result += largestChar;
 
-    //step 5
     for (let i = sorted.length - 1; i >= 0; i--) {
       if (sorted[i] !== largestChar) {
         current = sorted.splice(i, 1)[0]; //when you splice BACKWARDS though, you don't have to i++; in fact, that would mess you up.

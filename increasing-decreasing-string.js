@@ -1,7 +1,5 @@
 var sortString = function (s) {
   let result = "";
-  let alphabet = "abcdefghijklmnopqrstuvwxyz";
-
   let sorted = s.split("").sort();
   let current = "";
   while (sorted.length) {

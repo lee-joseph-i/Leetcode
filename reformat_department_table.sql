@@ -15,4 +15,6 @@ SELECT
 FROM department
 GROUP BY id
 
--- min or max work in this situation  
+-- min or max or sum work in this scenario.
+-- we need one of these aggregate functions because the goal is to get one row per id
+-- without it, an id can have multiple rows for null values per month

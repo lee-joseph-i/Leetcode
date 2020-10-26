@@ -22,6 +22,22 @@ var subtractProductAndSum = function (n) {
   return product - sum;
 };
 
+// same problem, but using unary plus (+) operator
+// unary plus attempts to convert what's in front of it to a number
+// +"1" returns 1
+// +true returns 1
+// +'' returns 0
+// +"hello" returns NaN
+var subtractProductAndSum = function (n) {
+  let product = 1;
+  let sum = 0;
+  n.toString().split('').forEach(num => {
+    product *= +num;
+    sum += +num;
+  });
+  return product - sum;
+};
+
 //smallerNumbersThanCurrent
 var smallerNumbersThanCurrent = function (nums) {
 
